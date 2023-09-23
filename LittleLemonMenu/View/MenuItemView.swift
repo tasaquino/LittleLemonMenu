@@ -18,7 +18,7 @@ struct MenuItemView: View {
     var fakeImageView : some View {
         Rectangle().size(width: 110, height: 100)
     }
-    
+
     var dishNameView: some View {
         Text(menuItem.title).font(.body).padding(EdgeInsets(top: 5, leading: 0, bottom: 0, trailing: 0)).lineLimit(1)
     }
@@ -26,7 +26,11 @@ struct MenuItemView: View {
     var body: some View {
         return NavigationLink(destination: MenuItemDetailsView(menuItem: menuItem)) {
             VStack(alignment: .center) {
-                fakeImageView
+                if let img = menuItem.menuImage {
+                    Image(img).resizable().aspectRatio(contentMode: .fit).frame(width: 110, height: 100)
+                } else {
+                    fakeImageView
+                }
                 dishNameView
             }
             .frame(width: 110, height: 130)

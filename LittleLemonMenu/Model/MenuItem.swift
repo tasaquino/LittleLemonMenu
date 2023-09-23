@@ -14,6 +14,7 @@ protocol MenuItemProtocol {
     var category: MenuCategory { get }
     var ordersCount: Int { get }
     var ingredients: [Ingredient] { get }
+    var menuImage: String? { get }
 }
 
 struct MenuItem: Identifiable, MenuItemProtocol {
@@ -23,6 +24,7 @@ struct MenuItem: Identifiable, MenuItemProtocol {
     var category: MenuCategory
     var ordersCount: Int
     var ingredients: [Ingredient]
+    var menuImage: String?
 }
 
 extension Array where Element == MenuItem {
